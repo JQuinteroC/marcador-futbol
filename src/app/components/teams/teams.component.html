@@ -1,5 +1,11 @@
+<div *ngIf="teams.length > 0; else noTeams"></div>
 <div *ngFor="let team of teams">
-  {{ team.id }} <br />
-  {{ team.name }} <br />
-  {{ team.position }}
+  ID: {{ team.id }} <br />
+  Nombre: {{ team.name }} <br />
+  Posición: {{ team.position }} <br />
+  Puntaje: {{ team.points }} <br />
 </div>
+
+<ng-template #noTeams>
+  <p>No hay equipos registrados</p>
+</ng-template>
