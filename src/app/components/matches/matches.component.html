@@ -1,0 +1,12 @@
+<div *ngIf="matches.length > 0; else noTeams"></div>
+<div *ngFor="let match of matches">
+  ID: {{ match.id }} <br />
+  ID team 1: {{ match.idTeam1 }} <br />
+  ID team 2: {{ match.idTeam2 }} <br />
+  Goles team 1: {{ match.goalsTeam1 }} <br />
+  Goles team 2: {{ match.goalsTeam2 }} <br />
+</div>
+
+<ng-template #noTeams>
+  <p>No hay partidos registrados</p>
+</ng-template>
