@@ -8,7 +8,7 @@ import {
 import { Observable, observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
-import { Match } from '../models/match.model';
+import { Match } from '../../../models/match.model';
 
 @Injectable({
   providedIn: 'root',
@@ -38,6 +38,11 @@ export class MatchService {
 
   updateMatch(match: Match) {
     this.matchDoc = this.db.doc(`matches/${match.id}`);
-    this.matchDoc.update(match);
+    this.matchDoc.update({
+      idTeam1: match.idTeam1,
+      idTeam2: match.idTeam2,
+      goalsTeam1: match.goalsTeam1,
+      goalsTeam2: match.goalsTeam2,
+    });
   }
 }
