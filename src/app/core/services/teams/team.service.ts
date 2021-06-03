@@ -7,7 +7,7 @@ import {
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
-import { Team } from '../models/team.model';
+import { Team } from '../../../models/team.model';
 
 @Injectable({
   providedIn: 'root',
@@ -18,7 +18,9 @@ export class TeamService {
   teamDoc: AngularFirestoreDocument<Team>;
 
   constructor(public db: AngularFirestore) {
-    this.teamsCollection = this.db.collection('teams');
+    this.teamsCollection = this.db.collection<Team>('teams', (ref) =>
+      ref.orderBy('position')
+    );
     this.teams = this.teamsCollection.snapshotChanges().pipe(
       map((actions) => {
         return actions.map((a) => {

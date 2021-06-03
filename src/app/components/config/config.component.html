@@ -1,1 +1,40 @@
-<p>configuración</p>
+<br />
+<table mat-table [dataSource]="teams" class="mat-elevation-z8" matSort>
+  <ng-container matColumnDef="ID">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>ID</th>
+    <td mat-cell *matCellDef="let element">{{ element.position }}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="Equipo">
+    <th mat-header-cell *matHeaderCellDef>Nombre del equipo</th>
+    <td mat-cell *matCellDef="let element">{{ element.name }}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="Editar">
+    <th mat-header-cell *matHeaderCellDef>Editar</th>
+    <td mat-cell *matCellDef="let element">
+      <button mat-flat-button color="primary" (click)="edit($event, element)">
+        <mat-icon>edit</mat-icon> Editar
+      </button>
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+</table>
+
+<br />
+<div *ngFor="let team of teams" class="edicion">
+  <div *ngIf="editing && editingTeam.id == team.id">
+    <mat-card>
+      <mat-form-field appearance="fill">
+        <mat-label>Nombre</mat-label>
+        <input matInput type="text" [(ngModel)]="editingTeam.name" />
+      </mat-form-field>
+
+      <button mat-flat-button color="primary" (click)="updateTeam()">
+        <mat-icon>save</mat-icon> Guardar
+      </button>
+    </mat-card>
+  </div>
+</div>

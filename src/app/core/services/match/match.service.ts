@@ -8,7 +8,7 @@ import {
 import { Observable, observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
-import { Match } from '../models/match.model';
+import { Match } from '../../../models/match.model';
 
 @Injectable({
   providedIn: 'root',

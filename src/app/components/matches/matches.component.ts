@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 
-import { MatchService } from '../../services/match.service';
+import { MatchService } from '../../core/services/match/match.service';
 
 import { Match } from '../../models/match.model';
 
