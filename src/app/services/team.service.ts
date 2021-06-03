@@ -5,7 +5,6 @@ import {
   AngularFirestoreDocument,
 } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
-import { Action } from 'rxjs/internal/scheduler/Action';
 import { map } from 'rxjs/operators';
 
 import { Team } from '../models/team.model';
