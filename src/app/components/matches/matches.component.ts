@@ -12,7 +12,7 @@ import { Match } from '../../models/match.model';
 export class MatchesComponent implements OnInit {
   matches: Match[] = [];
 
-  constructor(public matchService: MatchService) {}
+  constructor(private matchService: MatchService) {}
 
   ngOnInit(): void {
     this.matchService.getMatches().subscribe((matches) => {

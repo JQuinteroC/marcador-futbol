@@ -12,7 +12,7 @@ import { Team } from '../../models/team.model';
 export class TeamsComponent implements OnInit {
   teams: Team[] = [];
 
-  constructor(public teamService: TeamService) {}
+  constructor(private teamService: TeamService) {}
 
   ngOnInit(): void {
     this.teamService.getTeams().subscribe((teams) => {
