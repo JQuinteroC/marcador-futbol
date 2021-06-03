@@ -3,7 +3,6 @@ import { Component, OnInit } from '@angular/core';
 import { TeamService } from '../../core/services/teams/team.service';
 
 import { Team } from '../../models/team.model';
-import { Match } from '../../models/match.model';
 import { MatchService } from 'src/app/core/services/match/match.service';
 
 @Component({
@@ -13,7 +12,7 @@ import { MatchService } from 'src/app/core/services/match/match.service';
 })
 export class ConfigComponent implements OnInit {
   teams: Team[] = [];
-  editingTeam: Team = { points: 0 };
+  editingTeam: Team = { points: 0, id: '', position: 0, note: '', name: '' };
   editing: boolean = false;
   displayedColumns: string[] = ['ID', 'Equipo', 'Editar'];
 
@@ -23,11 +22,12 @@ export class ConfigComponent implements OnInit {
   ) {}
 
   updateTeam(): void {
+    console.log(this.editingTeam);
     this.teamService.updateTeam(this.editingTeam);
     this.editing = false;
   }
   ngOnInit(): void {
-    this.teamService.getteamsByOrder('position').subscribe((teams) => {
+    this.teamService.getTeams().subscribe((teams) => {
       this.teams = teams;
     });
   }

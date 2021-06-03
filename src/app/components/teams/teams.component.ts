@@ -11,7 +11,7 @@ import { Team } from '../../models/team.model';
 })
 export class TeamsComponent implements OnInit {
   public teams: Team[] = [];
-  displayedColumns: string[] = ['Posicion', 'Equipo', 'Puntos'];
+  displayedColumns: string[] = ['Posicion', 'Equipo', 'Puntos', 'Note'];
 
   constructor(public teamService: TeamService) {}
 

@@ -76,6 +76,7 @@ export class TeamService {
       name: team.name,
       position: team.position,
       points: team.points,
+      note: team.note,
     });
   }
 }
