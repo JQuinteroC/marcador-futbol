@@ -3,28 +3,31 @@ import { Component, OnInit } from '@angular/core';
 import { TeamService } from '../../core/services/teams/team.service';
 
 import { Team } from '../../models/team.model';
+import { Match } from '../../models/match.model';
+import { MatchService } from 'src/app/core/services/match/match.service';
+
 @Component({
   selector: 'app-config',
   templateUrl: './config.component.html',
   styleUrls: ['./config.component.scss'],
 })
 export class ConfigComponent implements OnInit {
-  panelOpenState = false;
-  selectedValue: string;
   teams: Team[] = [];
   editingTeam: Team = { points: 0 };
   editing: boolean = false;
   displayedColumns: string[] = ['ID', 'Equipo', 'Editar'];
 
-  constructor(private teamService: TeamService) {
-    this.selectedValue = '';
-  }
+  constructor(
+    private teamService: TeamService,
+    private matchService: MatchService
+  ) {}
+
   updateTeam(): void {
     this.teamService.updateTeam(this.editingTeam);
-    console.log('actualizar');
+    this.editing = false;
   }
   ngOnInit(): void {
-    this.teamService.getTeams().subscribe((teams) => {
+    this.teamService.getteamsByOrder('position').subscribe((teams) => {
       this.teams = teams;
     });
   }

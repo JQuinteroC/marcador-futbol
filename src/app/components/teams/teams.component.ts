@@ -12,10 +12,11 @@ import { Team } from '../../models/team.model';
 export class TeamsComponent implements OnInit {
   public teams: Team[] = [];
   displayedColumns: string[] = ['Posicion', 'Equipo', 'Puntos'];
-  constructor(private teamService: TeamService) {}
+
+  constructor(public teamService: TeamService) {}
 
   ngOnInit(): void {
-    this.teamService.getTeams().subscribe((teams) => {
+    this.teamService.getteamsByOrder('position').subscribe((teams) => {
       this.teams = teams;
     });
   }

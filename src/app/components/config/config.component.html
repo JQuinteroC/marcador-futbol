@@ -25,7 +25,7 @@
 
 <br />
 <div *ngFor="let team of teams" class="edicion">
-  <div *ngIf="editing && editingTeam.id == team.id">
+  <div *ngIf="editing && editingTeam.id === team.id">
     <mat-card>
       <mat-form-field appearance="fill">
         <mat-label>Nombre</mat-label>

@@ -38,6 +38,11 @@ export class MatchService {
 
   updateMatch(match: Match) {
     this.matchDoc = this.db.doc(`matches/${match.id}`);
-    this.matchDoc.update(match);
+    this.matchDoc.update({
+      idTeam1: match.idTeam1,
+      idTeam2: match.idTeam2,
+      goalsTeam1: match.goalsTeam1,
+      goalsTeam2: match.goalsTeam2,
+    });
   }
 }
