@@ -74,6 +74,7 @@ export class MatchesComponent implements OnInit {
           team.points += 1;
         }
       }
+      team.note = '';
       this.teamService.updateTeam(team);
     }
     this.calcualtePosition();
@@ -136,7 +137,7 @@ export class MatchesComponent implements OnInit {
         if (match.idTeam1 == tie.idTeamB)
           tie.totalB += match.goalsTeam1 - match.goalsTeam2;
       }
-      console.log(tie);
+
       if (
         (tie.totalA > tie.totalB && tie.posTeamA > tie.posTeamB) ||
         (tie.totalA < tie.totalB && tie.posTeamA < tie.posTeamB)
