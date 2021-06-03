@@ -1,3 +1,5 @@
-{{ team.id }}
-{{ team.name }}
-{{ team.position }}
+<div *ngFor="let team of teams">
+  {{ team.id }} <br />
+  {{ team.name }} <br />
+  {{ team.position }}
+</div>

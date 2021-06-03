@@ -1,4 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
+
+import { TeamService } from '../../services/team.service';
+
 import { Team } from '../../models/team.model';
 
 @Component({
@@ -7,13 +10,14 @@ import { Team } from '../../models/team.model';
   styleUrls: ['./teams.component.scss'],
 })
 export class TeamsComponent implements OnInit {
-  @Input() team: Team = {
-    id: '',
-    name: '',
-    position: '',
-  };
+  teams: Team[] = [];
 
-  constructor() {}
+  constructor(public teamService: TeamService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.teamService.getTeams().subscribe((teams) => {
+      this.teams = teams;
+      console.log(teams);
+    });
+  }
 }
